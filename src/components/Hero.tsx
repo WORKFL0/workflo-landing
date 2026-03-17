@@ -121,34 +121,27 @@ export default function Hero() {
           </aside>
 
           {/* 3×2 Service card grid */}
-          <div className="flex-1 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="flex-1 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 auto-rows-[220px]">
             {services.map((svc) => (
-              <div key={svc.title} className="svc-card flex flex-col">
-                {/* Card photo */}
-                <div className="h-[140px] overflow-hidden">
+              <div key={svc.title} className="svc-card flex flex-col h-[220px]">
+                {/* Card photo — 60% height */}
+                <div className="overflow-hidden" style={{ height: "130px", flexShrink: 0 }}>
                   <img
                     src={svc.img}
                     alt={svc.title}
                     className="w-full h-full object-cover"
                   />
                 </div>
-                {/* Card text */}
-                <div className="p-4 flex-1 flex flex-col">
-                  <h3
-                    className="font-bold mb-1"
-                    style={{ fontSize: "0.9rem", color: "#1d1d1f" }}
-                  >
+                {/* Card text — compact */}
+                <div className="p-3 flex flex-col flex-1 min-h-0">
+                  <h3 className="font-bold mb-1" style={{ fontSize: "0.82rem", color: "#1d1d1f" }}>
                     {svc.title}
                   </h3>
-                  <p style={{ fontSize: "0.75rem", color: "#424245", lineHeight: 1.5 }}>
+                  <p style={{ fontSize: "0.7rem", color: "#424245", lineHeight: 1.45, overflow: "hidden", display: "-webkit-box", WebkitLineClamp: 2, WebkitBoxOrient: "vertical" }}>
                     {svc.desc}
                   </p>
-                  {/* Yellow active indicator — matches Stitch */}
                   {svc.active && (
-                    <div
-                      className="mt-auto pt-3"
-                      style={{ borderTop: "2px solid #F5C41E", width: "32px", marginTop: "12px" }}
-                    />
+                    <div className="mt-auto" style={{ borderBottom: "2px solid #F5C41E", width: "28px" }} />
                   )}
                 </div>
               </div>

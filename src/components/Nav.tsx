@@ -21,9 +21,7 @@ export default function Nav() {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? "nav-glass" : "bg-transparent"
-      }`}
+      className="fixed top-0 left-0 right-0 z-50 nav-glass"
     >
       <div className="max-w-[1120px] mx-auto px-6 h-16 flex items-center justify-between">
 
@@ -36,8 +34,8 @@ export default function Nav() {
             W
           </div>
           <span
-            className="font-bold text-[14px] tracking-[0.12em] uppercase transition-colors"
-            style={{ color: scrolled ? "#1d1d1f" : "#ffffff" }}
+            className="font-bold text-[14px] tracking-[0.12em] uppercase"
+            style={{ color: "#1d1d1f" }}
           >
             WORKFLO
           </span>
@@ -52,9 +50,9 @@ export default function Nav() {
                 href="#contact"
                 className="px-5 py-2 rounded-full text-[13px] font-semibold transition-all"
                 style={{
-                  background: scrolled ? "#1d1d1f" : "rgba(255,255,255,0.18)",
+                  background: "#1d1d1f",
                   color: "#ffffff",
-                  border: "1px solid rgba(255,255,255,0.3)",
+                  border: "1px solid #1d1d1f",
                 }}
                 onMouseEnter={(e) => {
                   (e.currentTarget as HTMLAnchorElement).style.background = "#0071e3";
@@ -71,8 +69,8 @@ export default function Nav() {
               <a
                 key={item.label}
                 href={`#${item.label.toLowerCase().replace(" ", "-")}`}
-                className="flex items-center gap-1 text-[13px] font-medium transition-opacity opacity-90 hover:opacity-100"
-                style={{ color: scrolled ? "#1d1d1f" : "rgba(255,255,255,0.92)" }}
+                className="flex items-center gap-1 text-[13px] font-medium transition-opacity opacity-80 hover:opacity-100"
+                style={{ color: "#1d1d1f" }}
               >
                 {item.label}
                 {item.hasDropdown && (
@@ -112,7 +110,7 @@ export default function Nav() {
         <button
           className="md:hidden p-2 rounded-lg"
           onClick={() => setMobileOpen(!mobileOpen)}
-          style={{ color: scrolled ? "#1d1d1f" : "#ffffff" }}
+          style={{ color: "#1d1d1f" }}
         >
           <svg width="22" height="22" viewBox="0 0 20 20" fill="none">
             {mobileOpen
