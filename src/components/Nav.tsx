@@ -1,8 +1,27 @@
 "use client";
 import { useState, useEffect } from "react";
 
+const sidebarLinks = [
+  "IT Consulting",
+  "Cybersecurity",
+  "Cloud",
+  "Connectivity",
+  "Managed IT",
+  "Audio Visueel",
+  "Project Management",
+];
+
+const topNavLinks = [
+  { label: "Over Ons", hasDropdown: true },
+  { label: "Expertise", hasDropdown: true },
+  { label: "Diensten", hasDropdown: true },
+  { label: "Support", hasDropdown: false },
+  { label: "Contact", isButton: true },
+];
+
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -11,45 +30,168 @@ export default function Nav() {
   }, []);
 
   return (
-    <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled ? "glass border-b border-white/5" : "bg-transparent"
-      }`}
-    >
-      <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-        <div className="flex items-center gap-2">
-          <div className="w-7 h-7 rounded-lg bg-gradient-to-br from-violet-500 to-blue-500 flex items-center justify-center">
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-              <path d="M2 7L5.5 10.5L12 3.5" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-          </div>
-          <span className="text-white font-semibold text-lg tracking-tight">Workflo</span>
-        </div>
-
-        <div className="hidden md:flex items-center gap-8">
-          {["Services", "Fleet", "Security", "Gallery", "Support"].map((item) => (
-            <a
-              key={item}
-              href={`#${item.toLowerCase()}`}
-              className="text-sm text-white/50 hover:text-white/90 transition-colors"
-            >
-              {item}
-            </a>
-          ))}
-        </div>
-
-        <div className="flex items-center gap-3">
-          <a href="#" className="hidden md:block text-sm text-white/60 hover:text-white transition-colors">
-            Sign in
+    <>
+      {/* Left sidebar quick-links */}
+      <aside
+        className="fixed left-0 top-1/2 z-40 hidden xl:flex flex-col gap-1 py-4 px-2"
+        style={{
+          transform: "translateY(-50%)",
+          background: "rgba(255,255,255,0.85)",
+          backdropFilter: "blur(12px)",
+          borderRight: "1px solid rgba(0,0,0,0.07)",
+          borderRadius: "0 12px 12px 0",
+        }}
+      >
+        {sidebarLinks.map((link) => (
+          <a
+            key={link}
+            href="#"
+            className="text-xs font-medium px-3 py-2 rounded-lg transition-all"
+            style={{ color: "#1d1d1f", whiteSpace: "nowrap" }}
+            onMouseEnter={(e) => {
+              (e.currentTarget as HTMLAnchorElement).style.background = "#0071e3";
+              (e.currentTarget as HTMLAnchorElement).style.color = "#fff";
+            }}
+            onMouseLeave={(e) => {
+              (e.currentTarget as HTMLAnchorElement).style.background = "transparent";
+              (e.currentTarget as HTMLAnchorElement).style.color = "#1d1d1f";
+            }}
+          >
+            {link}
           </a>
+        ))}
+      </aside>
+
+      {/* Top horizontal nav */}
+      <nav
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+          scrolled ? "nav-glass shadow-sm" : "bg-transparent"
+        }`}
+      >
+        <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+          {/* Logo */}
+          <a href="#" className="flex items-center gap-2 flex-shrink-0">
+            <div
+              className="w-8 h-8 rounded-lg flex items-center justify-center font-bold text-sm"
+              style={{ background: "#F5C41E", color: "#1d1d1f" }}
+            >
+              W
+            </div>
+            <span
+              className="font-bold text-base tracking-widest uppercase"
+              style={{ color: scrolled ? "#1d1d1f" : "#ffffff", letterSpacing: "0.15em" }}
+            >
+              WORKFLO
+            </span>
+          </a>
+
+          {/* Desktop nav links */}
+          <div className="hidden md:flex items-center gap-6">
+            {topNavLinks.map((item) =>
+              item.isButton ? (
+                <a
+                  key={item.label}
+                  href="#contact"
+                  className="px-4 py-2 rounded-full text-sm font-medium transition-all"
+                  style={{
+                    background: "#0071e3",
+                    color: "#fff",
+                  }}
+                  onMouseEnter={(e) => {
+                    (e.currentTarget as HTMLAnchorElement).style.background = "#0077ed";
+                  }}
+                  onMouseLeave={(e) => {
+                    (e.currentTarget as HTMLAnchorElement).style.background = "#0071e3";
+                  }}
+                >
+                  {item.label}
+                </a>
+              ) : (
+                <a
+                  key={item.label}
+                  href="#"
+                  className="text-sm font-medium transition-colors flex items-center gap-1"
+                  style={{ color: scrolled ? "#1d1d1f" : "rgba(255,255,255,0.9)" }}
+                >
+                  {item.label}
+                  {item.hasDropdown && (
+                    <svg width="10" height="6" viewBox="0 0 10 6" fill="none">
+                      <path d="M1 1L5 5L9 1" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+                    </svg>
+                  )}
+                </a>
+              )
+            )}
+          </div>
+
+          {/* Download Support button */}
           <a
             href="#support"
-            className="px-4 py-2 rounded-full text-sm font-medium bg-violet-600 hover:bg-violet-500 text-white transition-colors"
+            className="hidden md:flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all"
+            style={{
+              background: scrolled ? "rgba(0,0,0,0.06)" : "rgba(255,255,255,0.15)",
+              color: scrolled ? "#1d1d1f" : "#ffffff",
+              border: "1px solid rgba(255,255,255,0.2)",
+            }}
           >
-            Get Started
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+              <path d="M7 1v8M4 6l3 3 3-3M2 11h10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+            Download Support
           </a>
+
+          {/* Mobile menu toggle */}
+          <button
+            className="md:hidden p-2 rounded-lg"
+            onClick={() => setMobileOpen(!mobileOpen)}
+            style={{ color: scrolled ? "#1d1d1f" : "#ffffff" }}
+          >
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              {mobileOpen ? (
+                <path d="M4 4L16 16M16 4L4 16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+              ) : (
+                <>
+                  <path d="M3 6h14M3 10h14M3 14h14" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                </>
+              )}
+            </svg>
+          </button>
         </div>
-      </div>
-    </nav>
+
+        {/* Mobile menu */}
+        {mobileOpen && (
+          <div
+            className="md:hidden px-6 pb-6 pt-2"
+            style={{
+              background: "rgba(255,255,255,0.95)",
+              backdropFilter: "blur(20px)",
+            }}
+          >
+            {topNavLinks.map((item) => (
+              <a
+                key={item.label}
+                href="#"
+                className="block py-3 text-sm font-medium border-b"
+                style={{ color: "#1d1d1f", borderColor: "rgba(0,0,0,0.06)" }}
+              >
+                {item.label}
+              </a>
+            ))}
+            <div className="mt-4 space-y-2">
+              {sidebarLinks.map((link) => (
+                <a
+                  key={link}
+                  href="#"
+                  className="block py-2 text-xs"
+                  style={{ color: "#6e6e73" }}
+                >
+                  {link}
+                </a>
+              ))}
+            </div>
+          </div>
+        )}
+      </nav>
+    </>
   );
 }

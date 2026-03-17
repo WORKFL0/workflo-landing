@@ -1,145 +1,174 @@
-const devices = [
-  { name: "MacBook Pro 16\"", user: "Sarah K.", os: "macOS 14.4", battery: 94, status: "healthy" },
-  { name: "MacBook Air M3", user: "James L.", os: "macOS 14.4", battery: 67, status: "healthy" },
-  { name: "Mac Studio", user: "Design Team", os: "macOS 14.3", battery: 100, status: "update" },
-  { name: "MacBook Pro 14\"", user: "Alex R.", os: "macOS 14.4", battery: 41, status: "healthy" },
-  { name: "iMac 27\"", user: "Reception", os: "macOS 14.4", battery: 100, status: "healthy" },
+"use client";
+
+const features = [
+  {
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+        <rect x="2" y="2" width="18" height="14" rx="2" stroke="#0071e3" strokeWidth="1.6" />
+        <path d="M7 16v2M15 16v2M5 18h12" stroke="#0071e3" strokeWidth="1.6" strokeLinecap="round" />
+      </svg>
+    ),
+    title: "Device Enrollment",
+    desc: "Zero-touch via Apple Business Manager",
+  },
+  {
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+        <circle cx="11" cy="11" r="8" stroke="#0071e3" strokeWidth="1.6" />
+        <path d="M8 11l2 2 4-4" stroke="#0071e3" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    ),
+    title: "Configuration Profiles",
+    desc: "Automatische instellingen per apparaat",
+  },
+  {
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+        <path d="M4 11h14M11 4l7 7-7 7" stroke="#0071e3" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    ),
+    title: "Software Updates",
+    desc: "Stille updates buiten werktijden",
+  },
+  {
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+        <rect x="3" y="5" width="16" height="12" rx="2" stroke="#0071e3" strokeWidth="1.6" />
+        <path d="M7 9h8M7 12h5" stroke="#0071e3" strokeWidth="1.6" strokeLinecap="round" />
+      </svg>
+    ),
+    title: "Inventory Management",
+    desc: "Real-time overzicht van uw fleet",
+  },
+  {
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+        <path d="M11 3l7 3.5v5c0 4-3 7.5-7 8.5C7 19 4 15.5 4 11.5V6.5L11 3z" stroke="#0071e3" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M8 11l2 2 4-4" stroke="#0071e3" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    ),
+    title: "Remote Wipe",
+    desc: "Veilig wissen bij verlies of diefstal",
+  },
 ];
 
-const statusColors: Record<string, string> = {
-  healthy: "#34d399",
-  update: "#f59e0b",
-  warning: "#ef4444",
-};
+const videoCards = [
+  {
+    title: "Zero-Touch Deployment",
+    desc: "Nieuwe Macs komen gebruiksklaar aan. Geen IT-bezoek vereist.",
+    thumbnail: "https://images.unsplash.com/photo-1531297484001-80022131f5a1?w=600&q=80",
+  },
+  {
+    title: "Security by Default",
+    desc: "FileVault, MDM en endpoint bescherming actief van dag één.",
+    thumbnail: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=600&q=80",
+  },
+  {
+    title: "Seamless Integration",
+    desc: "Naadloze koppeling met Microsoft 365, Slack en meer.",
+    thumbnail: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=80",
+  },
+];
 
 export default function FleetManagement() {
   return (
-    <section id="fleet" className="relative py-32 px-6 overflow-hidden">
-      <div
-        className="absolute top-0 right-0 w-[600px] h-[600px] pointer-events-none"
-        style={{
-          background: "radial-gradient(circle, rgba(59,130,246,0.08) 0%, transparent 65%)",
-          filter: "blur(60px)",
-        }}
-      />
-
-      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-        {/* Left: copy */}
-        <div>
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full glass mb-5 border border-emerald-500/20">
-            <span className="text-xs text-emerald-300 font-medium tracking-wide uppercase">Mac fleet management</span>
+    <section id="fleet" className="py-20 md:py-28" style={{ background: "#ffffff" }}>
+      <div className="max-w-6xl mx-auto px-6">
+        {/* Header */}
+        <div className="text-center mb-12">
+          <div
+            className="inline-block px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-widest mb-4"
+            style={{ background: "rgba(0,113,227,0.08)", color: "#0071e3" }}
+          >
+            Jamf Pro · Apple MDM
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-white tracking-tight mb-6">
-            Every device,
-            <br />
-            <span className="gradient-text">always in view.</span>
+          <h2
+            className="font-bold mb-4"
+            style={{ fontSize: "clamp(1.75rem, 3.5vw, 2.75rem)", color: "#1d1d1f" }}
+          >
+            Mac Fleet Management
           </h2>
-          <p className="text-white/40 text-lg leading-relaxed mb-8">
-            A clean, technical command center for your entire Mac fleet. Spot issues before
-            users notice them. Push fixes silently. Stay ahead.
+          <p className="mx-auto" style={{ fontSize: "1.05rem", color: "#6e6e73", maxWidth: "520px" }}>
+            Volledig beheer van uw Apple-vloot — van aanschaf tot pensionering.
+            Automatisch, veilig en schaalbaar.
           </p>
-          <ul className="space-y-4">
-            {[
-              "Live device inventory with hardware specs",
-              "Battery health trending over time",
-              "Automated policy enforcement",
-              "One-click remote wipe for lost devices",
-            ].map((item) => (
-              <li key={item} className="flex items-start gap-3 text-white/60 text-sm">
-                <span className="mt-0.5 w-4 h-4 rounded-full bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center flex-shrink-0">
-                  <svg width="8" height="8" viewBox="0 0 8 8" fill="none">
-                    <path d="M1.5 4l2 2 3-3" stroke="#34d399" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                </span>
-                {item}
-              </li>
-            ))}
-          </ul>
         </div>
 
-        {/* Right: device table */}
+        {/* Mac devices image */}
         <div
-          className="glass-strong rounded-2xl overflow-hidden"
-          style={{ boxShadow: "0 40px 80px rgba(0,0,0,0.4)" }}
+          className="rounded-2xl overflow-hidden mb-12"
+          style={{ boxShadow: "0 16px 48px rgba(0,0,0,0.1)", height: "280px" }}
         >
-          {/* Table header */}
-          <div className="px-6 py-4 border-b border-white/5 flex items-center justify-between">
-            <div>
-              <div className="text-sm font-semibold text-white">Fleet Overview</div>
-              <div className="text-xs text-white/30 mt-0.5">1,247 devices · 99.2% compliant</div>
-            </div>
-            <div className="flex items-center gap-2">
-              <div className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-              <span className="text-xs text-white/40">Live</span>
-            </div>
-          </div>
+          <img
+            src="https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=1400&q=80"
+            alt="Mac apparaten"
+            className="w-full h-full object-cover"
+          />
+        </div>
 
-          {/* Stats row */}
-          <div className="grid grid-cols-3 divide-x divide-white/5 border-b border-white/5">
-            {[
-              { label: "Total", value: "1,247", sub: "devices" },
-              { label: "Healthy", value: "1,236", sub: "99.2%" },
-              { label: "Alerts", value: "11", sub: "need attention" },
-            ].map((s) => (
-              <div key={s.label} className="px-4 py-3">
-                <div className="text-xs text-white/30">{s.label}</div>
-                <div className="text-lg font-semibold text-white">{s.value}</div>
-                <div className="text-xs text-white/25">{s.sub}</div>
+        {/* Feature icons row */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 mb-16">
+          {features.map((feature) => (
+            <div
+              key={feature.title}
+              className="text-center p-4 rounded-xl transition-all cursor-pointer"
+              style={{ background: "#f5f5f7" }}
+              onMouseEnter={(e) => {
+                (e.currentTarget as HTMLDivElement).style.background = "rgba(0,113,227,0.06)";
+                (e.currentTarget as HTMLDivElement).style.transform = "translateY(-2px)";
+              }}
+              onMouseLeave={(e) => {
+                (e.currentTarget as HTMLDivElement).style.background = "#f5f5f7";
+                (e.currentTarget as HTMLDivElement).style.transform = "translateY(0)";
+              }}
+            >
+              <div className="flex justify-center mb-2">{feature.icon}</div>
+              <div className="font-semibold text-xs mb-1" style={{ color: "#1d1d1f" }}>
+                {feature.title}
               </div>
-            ))}
-          </div>
+              <div style={{ fontSize: "0.72rem", color: "#6e6e73", lineHeight: 1.4 }}>
+                {feature.desc}
+              </div>
+            </div>
+          ))}
+        </div>
 
-          {/* Device rows */}
-          <div className="divide-y divide-white/5">
-            {devices.map((device) => (
-              <div key={device.name} className="px-6 py-3.5 flex items-center gap-4 hover:bg-white/[0.02] transition-colors">
+        {/* Video cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {videoCards.map((card) => (
+            <div
+              key={card.title}
+              className="rounded-2xl overflow-hidden cursor-pointer group"
+              style={{ boxShadow: "0 8px 32px rgba(0,0,0,0.1)" }}
+            >
+              <div className="relative h-48 overflow-hidden">
+                <img
+                  src={card.thumbnail}
+                  alt={card.title}
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
                 <div
-                  className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0"
-                  style={{ background: "rgba(255,255,255,0.05)" }}
+                  className="absolute inset-0 flex items-center justify-center"
+                  style={{ background: "rgba(0,0,0,0.35)" }}
                 >
-                  <svg width="16" height="12" viewBox="0 0 16 12" fill="none">
-                    <rect x="0.5" y="0.5" width="15" height="9" rx="1.5" stroke="white" strokeOpacity="0.4" />
-                    <path d="M5 11.5h6" stroke="white" strokeOpacity="0.4" strokeLinecap="round" />
-                    <path d="M8 9.5v2" stroke="white" strokeOpacity="0.4" strokeLinecap="round" />
-                  </svg>
-                </div>
-                <div className="flex-1 min-w-0">
-                  <div className="text-sm text-white font-medium truncate">{device.name}</div>
-                  <div className="text-xs text-white/30">{device.user} · {device.os}</div>
-                </div>
-                <div className="flex items-center gap-3">
-                  <div className="hidden sm:flex items-center gap-1.5">
-                    <div className="w-16 h-1 rounded-full bg-white/10 overflow-hidden">
-                      <div
-                        className="h-full rounded-full"
-                        style={{
-                          width: `${device.battery}%`,
-                          background: device.battery > 70 ? "#34d399" : device.battery > 30 ? "#f59e0b" : "#ef4444",
-                        }}
-                      />
-                    </div>
-                    <span className="text-xs text-white/30 w-8 text-right">{device.battery}%</span>
-                  </div>
                   <div
-                    className="px-2 py-0.5 rounded-full text-xs font-medium"
-                    style={{
-                      background: statusColors[device.status] + "15",
-                      color: statusColors[device.status],
-                      border: `1px solid ${statusColors[device.status]}25`,
-                    }}
+                    className="w-12 h-12 rounded-full flex items-center justify-center transition-transform group-hover:scale-110"
+                    style={{ background: "rgba(255,255,255,0.9)" }}
                   >
-                    {device.status}
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                      <path d="M5 3l9 5-9 5V3z" fill="#1d1d1f" />
+                    </svg>
                   </div>
                 </div>
               </div>
-            ))}
-          </div>
-
-          <div className="px-6 py-4 border-t border-white/5">
-            <button className="text-xs text-violet-400 hover:text-violet-300 transition-colors">
-              View all 1,247 devices →
-            </button>
-          </div>
+              <div className="p-4" style={{ background: "#ffffff" }}>
+                <h3 className="font-semibold mb-1" style={{ fontSize: "0.95rem", color: "#1d1d1f" }}>
+                  {card.title}
+                </h3>
+                <p style={{ fontSize: "0.82rem", color: "#6e6e73" }}>{card.desc}</p>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>

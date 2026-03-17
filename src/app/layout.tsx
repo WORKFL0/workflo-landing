@@ -1,20 +1,10 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
 export const metadata: Metadata = {
-  title: "Workflo — Modern Mac Workflow Management",
-  description: "Workflo gives Mac teams invisible protection, effortless fleet management, and a peace-of-mind workspace. Redesigned for the modern era.",
+  title: "Workflo — Uw IT, Onze Zorg. Pure Rust.",
+  description: "Workflo beheert uw volledige Apple-omgeving, zodat u zich kunt focussen op wat echt belangrijk is. Stressvrije IT voor moderne bedrijven in Amsterdam.",
+  keywords: "Mac IT beheer, Apple MSP, Amsterdam, IT managed services, Jamf, MacBook beheer",
 };
 
 export default function RootLayout({
@@ -23,10 +13,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+    <html lang="nl">
+      <body className="antialiased">
         {children}
       </body>
     </html>

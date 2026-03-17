@@ -1,121 +1,154 @@
-const faqs = [
+"use client";
+
+const supportOptions = [
   {
-    q: "How long does setup take?",
-    a: "Most teams are fully deployed within a day. Zero-touch enrollment means no physical device access needed.",
+    icon: (
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2v10z" stroke="#0071e3" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    ),
+    title: "Live Support",
+    desc: "Direct in gesprek met een Mac-expert. Gemiddelde reactietijd: 2 minuten.",
+    badge: "Online",
   },
   {
-    q: "Does it work with Apple Business Manager?",
-    a: "Yes — Workflo integrates natively with Apple Business Manager and Apple School Manager.",
+    icon: (
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z" stroke="#0071e3" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z" stroke="#0071e3" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    ),
+    title: "Knowledge Base",
+    desc: "Honderden handleidingen en how-to's voor uw Apple-omgeving.",
+    badge: "500+ artikelen",
   },
   {
-    q: "What identity providers do you support?",
-    a: "Okta, Azure AD, Google Workspace, JumpCloud, and any SAML 2.0 compliant IdP.",
-  },
-  {
-    q: "Can I try it before committing?",
-    a: "Absolutely. 14-day free trial, no credit card required, up to 25 devices.",
+    icon: (
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <rect x="2" y="3" width="20" height="14" rx="2" stroke="#0071e3" strokeWidth="1.8" />
+        <path d="M8 21h8M12 17v4" stroke="#0071e3" strokeWidth="1.8" strokeLinecap="round" />
+        <path d="M7 10l2 2 4-4" stroke="#0071e3" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    ),
+    title: "Remote Help",
+    desc: "Ons team neemt veilig de controle over uw Mac voor snelle probleemoplossing.",
+    badge: "Veilig & Versleuteld",
   },
 ];
 
 export default function Support() {
   return (
-    <section id="support" className="relative py-32 px-6 overflow-hidden">
+    <section
+      id="support"
+      className="relative py-20 md:py-28 overflow-hidden"
+      style={{
+        backgroundImage: "url('https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=1920&q=80')",
+        backgroundSize: "cover",
+        backgroundPosition: "center top",
+      }}
+    >
+      {/* Light overlay */}
       <div
-        className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] pointer-events-none"
-        style={{
-          background: "radial-gradient(ellipse, rgba(139,92,246,0.1) 0%, transparent 70%)",
-          filter: "blur(60px)",
-        }}
+        className="absolute inset-0"
+        style={{ background: "rgba(245,245,247,0.88)" }}
       />
 
-      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16">
-        {/* Left: CTA */}
-        <div className="flex flex-col justify-center">
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full glass mb-5 border border-pink-500/20 w-fit">
-            <span className="text-xs text-pink-300 font-medium tracking-wide uppercase">Support & helpdesk</span>
+      <div className="relative z-10 max-w-3xl mx-auto px-6">
+        {/* Centered glass card */}
+        <div
+          className="glass-card p-8 md:p-12 text-center"
+          style={{ boxShadow: "0 24px 64px rgba(0,0,0,0.1)" }}
+        >
+          <div
+            className="inline-block px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-widest mb-6"
+            style={{ background: "rgba(0,113,227,0.08)", color: "#0071e3" }}
+          >
+            Support & Helpdesk
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-white tracking-tight mb-6">
-            We're here
-            <br />
-            <span className="gradient-text-warm">whenever you need us.</span>
+          <h2
+            className="font-bold mb-4"
+            style={{ fontSize: "clamp(1.75rem, 3.5vw, 2.5rem)", color: "#1d1d1f" }}
+          >
+            Wij staan altijd voor u klaar
           </h2>
-          <p className="text-white/40 text-lg leading-relaxed mb-8">
-            World-class support from people who actually know Macs. Reach us via chat,
-            email, or phone — and get real answers fast.
+          <p
+            className="mb-8 mx-auto"
+            style={{ fontSize: "1.05rem", color: "#6e6e73", maxWidth: "440px", lineHeight: 1.6 }}
+          >
+            Ons Nederlandse support team is beschikbaar wanneer u ons nodig heeft.
+            Snel, persoonlijk en altijd in uw taal.
           </p>
 
-          <div className="space-y-4 mb-8">
-            {[
-              { icon: "💬", title: "Live chat", sub: "Average response: 2 minutes" },
-              { icon: "📧", title: "Email support", sub: "Within 4 hours, guaranteed" },
-              { icon: "📞", title: "Phone support", sub: "Business hours, all time zones" },
-            ].map((channel) => (
-              <div key={channel.title} className="flex items-center gap-4 glass rounded-xl px-4 py-3.5">
-                <span className="text-xl">{channel.icon}</span>
-                <div>
-                  <div className="text-white font-medium text-sm">{channel.title}</div>
-                  <div className="text-white/35 text-xs">{channel.sub}</div>
+          {/* Support options */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
+            {supportOptions.map((option) => (
+              <div
+                key={option.title}
+                className="p-4 rounded-xl text-left transition-all cursor-pointer group"
+                style={{
+                  background: "rgba(255,255,255,0.6)",
+                  border: "1px solid rgba(0,0,0,0.06)",
+                }}
+                onMouseEnter={(e) => {
+                  (e.currentTarget as HTMLDivElement).style.background = "rgba(0,113,227,0.05)";
+                  (e.currentTarget as HTMLDivElement).style.borderColor = "rgba(0,113,227,0.2)";
+                  (e.currentTarget as HTMLDivElement).style.transform = "translateY(-2px)";
+                }}
+                onMouseLeave={(e) => {
+                  (e.currentTarget as HTMLDivElement).style.background = "rgba(255,255,255,0.6)";
+                  (e.currentTarget as HTMLDivElement).style.borderColor = "rgba(0,0,0,0.06)";
+                  (e.currentTarget as HTMLDivElement).style.transform = "translateY(0)";
+                }}
+              >
+                <div
+                  className="w-10 h-10 rounded-xl flex items-center justify-center mb-3"
+                  style={{ background: "rgba(0,113,227,0.08)" }}
+                >
+                  {option.icon}
                 </div>
+                <h3 className="font-semibold mb-1" style={{ fontSize: "0.9rem", color: "#1d1d1f" }}>
+                  {option.title}
+                </h3>
+                <p style={{ fontSize: "0.78rem", color: "#6e6e73", lineHeight: 1.5, marginBottom: "8px" }}>
+                  {option.desc}
+                </p>
+                <span
+                  className="inline-block px-2 py-0.5 rounded-full text-xs font-medium"
+                  style={{ background: "rgba(0,113,227,0.1)", color: "#0071e3" }}
+                >
+                  {option.badge}
+                </span>
               </div>
             ))}
           </div>
 
-          <div className="flex gap-3">
-            <a
-              href="#"
-              className="px-6 py-3 rounded-full bg-violet-600 hover:bg-violet-500 text-white font-semibold text-sm transition-all hover:shadow-lg hover:shadow-violet-500/25 hover:-translate-y-0.5"
-            >
-              Start free trial
-            </a>
-            <a
-              href="#"
-              className="px-6 py-3 rounded-full glass hover:bg-white/[0.06] text-white/70 font-medium text-sm transition-all border border-white/10"
-            >
-              Talk to sales
-            </a>
-          </div>
-        </div>
-
-        {/* Right: FAQ */}
-        <div className="flex flex-col justify-center space-y-4">
-          <div className="text-white/50 text-sm mb-2 font-medium">Frequently asked questions</div>
-          {faqs.map((faq) => (
-            <div
-              key={faq.q}
-              className="glass rounded-xl p-5 hover:bg-white/[0.05] transition-colors"
-            >
-              <div className="text-white font-medium text-sm mb-2">{faq.q}</div>
-              <div className="text-white/40 text-sm leading-relaxed">{faq.a}</div>
-            </div>
-          ))}
-
-          {/* Pricing teaser */}
-          <div
-            className="glass-strong rounded-2xl p-6 mt-4"
-            style={{ boxShadow: "inset 0 1px 0 rgba(255,255,255,0.08)" }}
+          {/* CTA */}
+          <a
+            href="#contact"
+            className="inline-flex items-center gap-2 px-8 py-4 rounded-full font-bold text-base transition-all"
+            style={{
+              background: "#F5C41E",
+              color: "#1d1d1f",
+              boxShadow: "0 4px 20px rgba(245,196,30,0.4)",
+            }}
+            onMouseEnter={(e) => {
+              (e.currentTarget as HTMLAnchorElement).style.background = "#f0ba0a";
+              (e.currentTarget as HTMLAnchorElement).style.transform = "translateY(-2px)";
+            }}
+            onMouseLeave={(e) => {
+              (e.currentTarget as HTMLAnchorElement).style.background = "#F5C41E";
+              (e.currentTarget as HTMLAnchorElement).style.transform = "translateY(0)";
+            }}
           >
-            <div className="flex items-center justify-between mb-3">
-              <div>
-                <div className="text-white font-semibold">Pro plan</div>
-                <div className="text-white/30 text-xs">Up to 500 devices</div>
-              </div>
-              <div className="text-right">
-                <div className="text-2xl font-bold text-white">$8</div>
-                <div className="text-white/30 text-xs">/ device / month</div>
-              </div>
-            </div>
-            <div className="h-px bg-white/5 mb-3" />
-            <div className="grid grid-cols-2 gap-2">
-              {["All features", "Priority support", "SSO/SAML", "Audit logs", "Custom policies", "API access"].map((f) => (
-                <div key={f} className="flex items-center gap-1.5 text-xs text-white/40">
-                  <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
-                    <path d="M2 5l2 2 4-4" stroke="#34d399" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                  {f}
-                </div>
-              ))}
-            </div>
-          </div>
+            Get Help Now
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </a>
+
+          <p style={{ marginTop: "12px", fontSize: "0.78rem", color: "#6e6e73" }}>
+            Of bel ons: <a href="tel:+31206001234" style={{ color: "#0071e3" }}>+31 (0)20 600 1234</a>
+          </p>
         </div>
       </div>
     </section>
