@@ -104,7 +104,7 @@ export default function Hero() {
       <div className="relative z-10 flex-1 flex flex-col max-w-[1120px] w-full mx-auto px-6" style={{ paddingTop: "80px", paddingBottom: "16px" }}>
 
         {/* Grid: sidebar left + service cards right */}
-        <div className="flex gap-6 flex-1">
+        <div className="flex gap-6 flex-1" style={{ minHeight: 0 }}>
 
           {/* Left sidebar — Quick-links */}
           <aside className="hidden lg:flex flex-col gap-2 w-[190px] flex-shrink-0">
@@ -121,12 +121,15 @@ export default function Hero() {
             ))}
           </aside>
 
-          {/* 3×2 Service card grid */}
-          <div className="flex-1 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 auto-rows-[220px]">
+          {/* 3×2 Service card grid — fills available height */}
+          <div
+            className="flex-1 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"
+            style={{ gridTemplateRows: "1fr 1fr" }}
+          >
             {services.map((svc) => (
-              <div key={svc.title} className="svc-card flex flex-col h-[220px]">
-                {/* Card photo — 60% height */}
-                <div className="overflow-hidden" style={{ height: "130px", flexShrink: 0 }}>
+              <div key={svc.title} className="svc-card flex flex-col">
+                {/* Card photo — 58% of card height */}
+                <div className="overflow-hidden" style={{ height: "58%", flexShrink: 0 }}>
                   <img
                     src={svc.img}
                     alt={svc.title}
