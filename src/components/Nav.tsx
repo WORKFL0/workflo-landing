@@ -31,18 +31,45 @@ export default function Nav() {
 
   return (
     <>
+      {/* Left sidebar quick-links */}
+      <aside
+        className="fixed left-0 top-1/2 z-40 hidden xl:flex flex-col gap-1 py-4 px-2"
+        style={{
+          transform: "translateY(-50%)",
+          background: "rgba(255,255,255,0.85)",
+          backdropFilter: "blur(12px)",
+          borderRight: "1px solid rgba(0,0,0,0.07)",
+          borderRadius: "0 12px 12px 0",
+        }}
+      >
+        {sidebarLinks.map((link) => (
+          <a
+            key={link}
+            href="#"
+            className="text-xs font-medium px-3 py-2 rounded-lg transition-all"
+            style={{ color: "#1d1d1f", whiteSpace: "nowrap" }}
+            onMouseEnter={(e) => {
+              (e.currentTarget as HTMLAnchorElement).style.background = "rgba(0,0,0,0.05)";
+            }}
+            onMouseLeave={(e) => {
+              (e.currentTarget as HTMLAnchorElement).style.background = "transparent";
+            }}
+          >
+            {link}
+          </a>
+        ))}
+      </aside>
       {/* Top horizontal nav */}
       <nav
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          scrolled ? "nav-glass shadow-sm" : "bg-transparent"
+           scrolled ? "nav-glass shadow-sm" : "bg-transparent mix-blend-difference text-white"
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
           {/* Logo */}
           <a href="#" className="flex items-center gap-2 flex-shrink-0">
             <div
-              className="w-8 h-8 rounded-lg flex items-center justify-center font-bold text-sm"
-              style={{ background: "#F5C41E", color: "#1d1d1f" }}
+              className={`w-8 h-8 rounded-lg flex items-center justify-center font-bold text-sm ${scrolled ? 'bg-[#1d1d1f] text-white' : 'bg-white text-black'}`}
             >
               W
             </div>
@@ -61,16 +88,16 @@ export default function Nav() {
                 <a
                   key={item.label}
                   href="#contact"
-                  className="px-4 py-2 rounded-full text-sm font-medium transition-all"
+                  className="px-4 py-2 rounded-full text-sm font-medium transition-all text-[#1d1d1f]"
                   style={{
-                    background: "#0071e3",
-                    color: "#fff",
+                    background: "#F5C41E",
+                    boxShadow: "0 2px 10px rgba(245,196,30,0.3)",
                   }}
                   onMouseEnter={(e) => {
-                    (e.currentTarget as HTMLAnchorElement).style.background = "#0077ed";
+                    (e.currentTarget as HTMLAnchorElement).style.filter = "brightness(1.05)";
                   }}
                   onMouseLeave={(e) => {
-                    (e.currentTarget as HTMLAnchorElement).style.background = "#0071e3";
+                    (e.currentTarget as HTMLAnchorElement).style.filter = "brightness(1)";
                   }}
                 >
                   {item.label}
@@ -79,8 +106,7 @@ export default function Nav() {
                 <a
                   key={item.label}
                   href="#"
-                  className="text-sm font-medium transition-colors flex items-center gap-1"
-                  style={{ color: scrolled ? "#1d1d1f" : "rgba(255,255,255,0.9)" }}
+                  className={`text-sm font-medium transition-colors flex items-center gap-1 ${scrolled ? 'text-[#1d1d1f]' : 'text-white'}`}
                 >
                   {item.label}
                   {item.hasDropdown && (
@@ -96,11 +122,10 @@ export default function Nav() {
           {/* Download Support button */}
           <a
             href="#support"
-            className="hidden md:flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all"
+            className="hidden md:flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all text-[#1d1d1f]"
             style={{
-              background: scrolled ? "rgba(0,0,0,0.06)" : "rgba(255,255,255,0.15)",
-              color: scrolled ? "#1d1d1f" : "#ffffff",
-              border: "1px solid rgba(255,255,255,0.2)",
+              background: scrolled ? "rgba(0,0,0,0.04)" : "rgba(255,255,255,0.8)",
+              border: scrolled ? "1px solid rgba(0,0,0,0.1)" : "1px solid transparent",
             }}
           >
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none">

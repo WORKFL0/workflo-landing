@@ -59,11 +59,11 @@ export default function Partners() {
   return (
     <section
       id="partners"
-      className="py-14 overflow-hidden"
-      style={{ background: "#f5f5f7", borderTop: "1px solid rgba(0,0,0,0.05)" }}
+      className="py-16 overflow-hidden relative z-10"
+      style={{ background: "transparent" }}
     >
       <div className="max-w-6xl mx-auto px-6 mb-8 text-center">
-        <p style={{ fontSize: "0.82rem", fontWeight: 600, color: "#6e6e73", letterSpacing: "0.1em", textTransform: "uppercase" }}>
+        <p style={{ fontSize: "0.82rem", fontWeight: 600, color: "#86868b", letterSpacing: "0.15em", textTransform: "uppercase" }}>
           Onze partners
         </p>
       </div>
@@ -72,27 +72,27 @@ export default function Partners() {
       <div className="relative">
         {/* Gradient fades */}
         <div
-          className="absolute left-0 top-0 bottom-0 w-20 z-10 pointer-events-none"
-          style={{ background: "linear-gradient(to right, #f5f5f7, transparent)" }}
+          className="absolute left-0 top-0 bottom-0 w-32 z-10 pointer-events-none"
+          style={{ background: "linear-gradient(to right, #fdfdfd, transparent)" }}
         />
         <div
-          className="absolute right-0 top-0 bottom-0 w-20 z-10 pointer-events-none"
-          style={{ background: "linear-gradient(to left, #f5f5f7, transparent)" }}
+          className="absolute right-0 top-0 bottom-0 w-32 z-10 pointer-events-none"
+          style={{ background: "linear-gradient(to left, #fdfdfd, transparent)" }}
         />
 
         <div
-          className="flex gap-12 items-center"
+          className="flex gap-16 items-center"
           style={{
             display: "flex",
             width: "max-content",
-            animation: "scroll-left 28s linear infinite",
+            animation: "scroll-left 35s linear infinite",
           }}
         >
           {allPartners.map((partner, i) => (
             <div
               key={`${partner.name}-${i}`}
               className="partner-logo flex items-center justify-center px-6 cursor-pointer"
-              style={{ color: "#1d1d1f", minWidth: "120px" }}
+              style={{ color: "#1d1d1f", minWidth: "140px" }}
               title={partner.name}
             >
               {partner.logo}
