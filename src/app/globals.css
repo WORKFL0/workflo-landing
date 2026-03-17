@@ -28,31 +28,53 @@ body {
   overflow-x: hidden;
 }
 
-/* Glass card - white/light */
-.glass-card {
-  background: rgba(255, 255, 255, 0.7);
+/* Glass card - Stitch Design */
+.stitch-card {
+  background: rgba(255, 255, 255, 0.45);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 12px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.03), inset 0 0 0 1px rgba(255,255,255,0.4);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+.stitch-card:hover {
+  background: rgba(255, 255, 255, 0.55);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.06), inset 0 0 0 1px rgba(255,255,255,0.5);
+}
+
+.stitch-sidebar-item {
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  padding: 8px 16px;
+  color: #1d1d1f;
+  font-size: 13px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+.stitch-sidebar-item:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+.stitch-sidebar-item.active {
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid var(--brand-yellow);
+  box-shadow: 0 0 12px rgba(245,196,30,0.3);
+  font-weight: 600;
+}
+
+.stitch-trust-band {
+  background: rgba(255, 255, 255, 0.35);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
   border: 1px solid rgba(255, 255, 255, 0.5);
-  border-radius: 20px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.03);
-}
-
-/* Glass card - dark */
-.glass-card-dark {
-  background: rgba(29, 29, 31, 0.8);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 20px;
-}
-
-/* Nav glass */
-.nav-glass {
-  background: rgba(255, 255, 255, 0.75);
-  backdrop-filter: blur(30px);
-  -webkit-backdrop-filter: blur(30px);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  border-radius: 12px;
 }
 
 @keyframes float {
