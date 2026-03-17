@@ -78,11 +78,11 @@ export default function PeaceOfMind() {
         style={{ background: "linear-gradient(to bottom, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.7) 100%)" }}
       />
 
-      {/* Floating glassmorphic icons */}
+      {/* Floating glassmorphic icons — only on very wide screens */}
       {floatingIcons.map((item) => (
         <div
           key={item.label}
-          className={`absolute ${item.animClass} hidden lg:flex flex-col items-center gap-2`}
+          className={`absolute ${item.animClass} hidden 2xl:flex flex-col items-center gap-2`}
           style={{
             top: item.top,
             left: item.left,

@@ -31,37 +31,6 @@ export default function Nav() {
 
   return (
     <>
-      {/* Left sidebar quick-links */}
-      <aside
-        className="fixed left-0 top-1/2 z-40 hidden xl:flex flex-col gap-1 py-4 px-2"
-        style={{
-          transform: "translateY(-50%)",
-          background: "rgba(255,255,255,0.85)",
-          backdropFilter: "blur(12px)",
-          borderRight: "1px solid rgba(0,0,0,0.07)",
-          borderRadius: "0 12px 12px 0",
-        }}
-      >
-        {sidebarLinks.map((link) => (
-          <a
-            key={link}
-            href="#"
-            className="text-xs font-medium px-3 py-2 rounded-lg transition-all"
-            style={{ color: "#1d1d1f", whiteSpace: "nowrap" }}
-            onMouseEnter={(e) => {
-              (e.currentTarget as HTMLAnchorElement).style.background = "#0071e3";
-              (e.currentTarget as HTMLAnchorElement).style.color = "#fff";
-            }}
-            onMouseLeave={(e) => {
-              (e.currentTarget as HTMLAnchorElement).style.background = "transparent";
-              (e.currentTarget as HTMLAnchorElement).style.color = "#1d1d1f";
-            }}
-          >
-            {link}
-          </a>
-        ))}
-      </aside>
-
       {/* Top horizontal nav */}
       <nav
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${

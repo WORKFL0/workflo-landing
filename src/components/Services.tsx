@@ -56,11 +56,8 @@ export default function Services() {
   return (
     <section
       id="services"
-      className="relative z-10 pb-16"
-      style={{
-        marginTop: "-80px",
-        paddingTop: "0",
-      }}
+      className="relative z-10 py-20"
+      style={{ background: "#f5f5f7" }}
     >
       <div className="max-w-6xl mx-auto px-6">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
