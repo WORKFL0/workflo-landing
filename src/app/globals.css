@@ -1,193 +1,121 @@
 @import "tailwindcss";
 
 :root {
-  --background: #fdfdfd;
-  --foreground: #1d1d1f;
-  --accent: #F5C41E;
-  --accent-hover: #e0b016;
-  --brand-yellow: #F5C41E;
-  --light-bg: #f5f5f7;
+  --yellow: #F5C41E;
+  --blue: #0071e3;
   --dark: #1d1d1f;
+  --mid: #424245;
+  --light: #6e6e73;
+  --bg-light: #f5f5f7;
 }
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
 body {
-  background: var(--background);
-  color: var(--foreground);
+  background: #fff;
+  color: var(--dark);
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
 }
 
-/* Glass card - Stitch Design */
-.stitch-card {
-  background: rgba(255, 255, 255, 0.45);
-  backdrop-filter: blur(28px);
-  -webkit-backdrop-filter: blur(28px);
-  border: 1px solid rgba(255, 255, 255, 0.6);
-  border-radius: 12px;
-  box-shadow: 0 4px 14px rgba(0,0,0,0.03), inset 0 0 0 1px rgba(255,255,255,0.4);
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
-}
-.stitch-card:hover {
-  background: rgba(255, 255, 255, 0.55);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(0,0,0,0.06), inset 0 0 0 1px rgba(255,255,255,0.5);
-}
-
-.stitch-sidebar-item {
-  background: rgba(255, 255, 255, 0.3);
+/* Glass sidebar item — matches Stitch screen 1 */
+.ql-item {
+  background: rgba(255,255,255,0.35);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 8px;
-  padding: 8px 16px;
+  border: 1px solid rgba(255,255,255,0.35);
+  border-radius: 10px;
+  padding: 9px 16px;
   color: #1d1d1f;
   font-size: 13px;
   font-weight: 500;
-  transition: all 0.2s ease;
   cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
 }
-.stitch-sidebar-item:hover {
-  background: rgba(255, 255, 255, 0.5);
-}
-.stitch-sidebar-item.active {
-  background: rgba(255, 255, 255, 0.85);
-  border: 1px solid var(--brand-yellow);
-  box-shadow: 0 0 12px rgba(245,196,30,0.3);
+.ql-item:hover { background: rgba(255,255,255,0.55); }
+.ql-item.active {
+  background: rgba(255,255,255,0.9);
+  border-color: var(--yellow);
+  box-shadow: 0 0 0 1px var(--yellow), 0 4px 12px rgba(245,196,30,0.25);
   font-weight: 600;
 }
 
-.stitch-trust-band {
-  background: rgba(255, 255, 255, 0.35);
+/* Service card — glass, matches Stitch screen 1 */
+.svc-card {
+  background: rgba(255,255,255,0.42);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
-  border: 1px solid rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(255,255,255,0.55);
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+  transition: all 0.25s;
+  cursor: pointer;
+  position: relative;
+}
+.svc-card:hover {
+  background: rgba(255,255,255,0.62);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+/* Trust band */
+.trust-band {
+  background: rgba(255,255,255,0.38);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,255,255,0.5);
   border-radius: 12px;
 }
 
-@keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
+/* Section glass card (light sections) */
+.glass-card {
+  background: rgba(255,255,255,0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255,255,255,0.5);
+  border-radius: 16px;
 }
 
-@keyframes float2 {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-14px); }
+/* Dark glass card (security section) */
+.dark-card {
+  background: rgba(0,0,0,0.42);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 16px;
+  transition: all 0.25s;
+}
+.dark-card:hover {
+  background: rgba(0,113,227,0.18);
+  border-color: rgba(0,113,227,0.35);
+  transform: translateY(-3px);
 }
 
-@keyframes float3 {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-8px); }
-}
-
-@keyframes float4 {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-12px); }
+/* Nav glass */
+.nav-glass {
+  background: rgba(255,255,255,0.72);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-bottom: 1px solid rgba(0,0,0,0.06);
 }
 
 @keyframes scroll-left {
   0% { transform: translateX(0); }
   100% { transform: translateX(-50%); }
 }
+.animate-scroll { animation: scroll-left 30s linear infinite; }
 
-@keyframes fade-up {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+@keyframes float {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
 }
+.animate-float   { animation: float 6s ease-in-out infinite; }
+.animate-float-2 { animation: float 7s ease-in-out infinite 1s; }
+.animate-float-3 { animation: float 5s ease-in-out infinite 2s; }
+.animate-float-4 { animation: float 8s ease-in-out infinite 0.5s; }
 
-.animate-float { animation: float 6s ease-in-out infinite; }
-.animate-float-2 { animation: float2 7s ease-in-out infinite 1s; }
-.animate-float-3 { animation: float3 5s ease-in-out infinite 2s; }
-.animate-float-4 { animation: float4 8s ease-in-out infinite 0.5s; }
-.animate-scroll-left { animation: scroll-left 30s linear infinite; }
-.animate-fade-up { animation: fade-up 0.8s ease forwards; }
-
-/* Partner logos */
-.partner-logo {
-  filter: grayscale(100%);
-  opacity: 0.4;
-  transition: filter 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
-}
-.partner-logo:hover {
-  filter: grayscale(0%);
-  opacity: 1;
-  transform: scale(1.05);
-}
-
-::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.15); border-radius: 4px; }
-::-webkit-scrollbar-thumb:hover { background: rgba(0,0,0,0.3); }
-
-/* Bulletproof Button Styles */
-.btn-primary {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 1.25rem 2.5rem;
-  border-radius: 9999px;
-  font-weight: 600;
-  font-size: 1.125rem;
-  color: #1d1d1f;
-  background-color: var(--brand-yellow);
-  box-shadow: 0 8px 20px rgba(245,196,30,0.3);
-  transition: all 0.3s ease;
-  text-decoration: none;
-}
-.btn-primary:hover {
-  filter: brightness(1.05);
-  transform: translateY(-3px);
-  box-shadow: 0 12px 25px rgba(245,196,30,0.4);
-}
-
-.btn-secondary {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 1.25rem 2.5rem;
-  border-radius: 9999px;
-  font-weight: 500;
-  font-size: 1.125rem;
-  color: #1d1d1f;
-  background-color: rgba(255,255,255,0.8);
-  border: 1px solid rgba(0,0,0,0.05);
-  box-shadow: 0 4px 15px rgba(0,0,0,0.02);
-  transition: all 0.3s ease;
-  text-decoration: none;
-}
-.btn-secondary:hover {
-  background-color: #ffffff;
-  transform: translateY(-3px);
-}
-
-.btn-nav-special {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.625rem 1.75rem;
-  border-radius: 9999px;
-  font-weight: 600;
-  font-size: 0.875rem;
-  color: #1d1d1f;
-  background-color: var(--brand-yellow);
-  box-shadow: 0 4px 14px rgba(245,196,30,0.3);
-  transition: all 0.3s ease;
-  text-decoration: none;
-}
-.btn-nav-special:hover {
-  filter: brightness(1.05);
-  transform: translateY(-1px);
-}
-
+::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.15); border-radius: 3px; }

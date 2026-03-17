@@ -6,161 +6,186 @@ const quickLinks = [
   { name: "Cloud", active: false },
   { name: "Connectivity", active: false },
   { name: "Managed IT", active: false },
-  { name: "Audio Visueel", active: true },
+  { name: "Audio Visueel", active: false },
   { name: "Project Management", active: false },
 ];
 
-const gridItems = [
+const services = [
   {
     title: "Managed Mac IT",
-    desc: "Workflo is jECT no-nonsense approach in intersformalie en noor jax plays on hover.",
-    icon: (
-      <svg className="w-16 h-16 text-[#4a5568]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-      </svg>
-    ),
-    active: false,
+    desc: "Volledig beheer van uw Apple-apparaten via Jamf. Automatische updates en monitoring — zonder zorgen.",
+    img: "https://images.unsplash.com/photo-1547586696-ea22b4d4235d?w=600&q=80",
   },
   {
     title: "Mac Cloud Integration",
-    desc: "Workflo is jECT no-nonsense approach in increunt cloud antisservices plays on hover.",
-    icon: (
-      <svg className="w-16 h-16 text-[#3182ce]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
-      </svg>
-    ),
+    desc: "Microsoft 365, Azure en cloud infrastructuur naadloos geïntegreerd in uw Apple-werkplek.",
+    img: "https://images.unsplash.com/photo-1614064641938-3bbee52942c7?w=600&q=80",
     active: true,
   },
   {
     title: "Mac Security",
-    desc: "Workflo is high-definition deliver, connectivity and connectivity plays on hover.",
-    icon: (
-      <svg className="w-16 h-16 text-[#805ad5]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-      </svg>
-    ),
+    desc: "Endpoint beveiliging, netwerk monitoring en compliance — uw bedrijfsdata altijd veilig.",
+    img: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=600&q=80",
     active: true,
   },
   {
     title: "Mac Connectivity",
-    desc: "Workflo is jECT no-nonsense approach in intersformalie en noor jar digitale Amsterdam.",
-    icon: (
-      <svg className="w-16 h-16 text-[#dd6b20]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.905 14.141 0M1.394 9.393c5.857-5.857 15.355-5.857 21.213 0" />
-      </svg>
-    ),
+    desc: "Cisco Meraki en Ubiquiti netwerken voor maximale prestaties en betrouwbaarheid.",
+    img: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600&q=80",
     active: true,
   },
   {
     title: "Remote Mac Support",
-    desc: "Workflo is jECT no-nonsense approach in intersformalie en noor jar Instodam.",
-    icon: (
-      <svg className="w-16 h-16 text-[#319795]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2zM12 9v2m0 4h.01m-6.938 4h13.856" />
-      </svg>
-    ),
+    desc: "Directe hulp op afstand of on-site. Onze experts lossen problemen snel op.",
+    img: "https://images.unsplash.com/photo-1587614382346-4ec70e388b28?w=600&q=80",
     active: true,
   },
   {
     title: "Mac Project Management",
-    desc: "Workflo is jOCT no-nonsense approach in intersformalie en noor jax digitale management.",
-    icon: (
-      <svg className="w-16 h-16 text-[#e53e3e]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-      </svg>
-    ),
+    desc: "Van migraties tot rollouts — IT-projecten van begin tot eind professioneel beheerd.",
+    img: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&q=80",
     active: true,
   },
 ];
 
+const partners = [
+  {
+    label: "Apple",
+    logo: (
+      <svg viewBox="0 0 814 1000" className="h-6 w-auto fill-current">
+        <path d="M788.1 340.9c-5.8 4.5-108.2 62.2-108.2 190.5 0 148.4 130.3 200.9 134.2 202.2-.6 3.2-20.7 71.9-68.7 141.9-42.8 61.6-87.5 123.1-155.5 123.1s-85.5-39.5-164-39.5c-76 0-103.7 40.8-165.9 40.8s-105-42.3-162.1-109.4C85 459 55.1 338.6 55.1 222c0-90.4 31.7-174.4 89.3-236.9C220.7 12.7 296.4-1 368.7-1c71.1 0 136.6 25 185 25.3 45.7.2 115.9-25.5 198.3-25.5zM541.2 37.6c34.1-40.8 94.2-65 147.3-65 7 48.5-18.3 97.1-51.5 131.5-31.1 32.1-87.5 56.4-142.2 51.1-8.5-47.6 18-99.1 46.4-117.6z"/>
+      </svg>
+    ),
+  },
+  {
+    label: "Jamf",
+    logo: (
+      <svg viewBox="0 0 200 200" className="h-7 w-auto fill-current">
+        <path d="M100 10C50.3 10 10 50.3 10 100s40.3 90 90 90 90-40.3 90-90S149.7 10 100 10zm0 160c-38.6 0-70-31.4-70-70s31.4-70 70-70 70 31.4 70 70-31.4 70-70 70zm-10-100h20v60h-20z"/>
+      </svg>
+    ),
+    text: "jamf",
+  },
+  {
+    label: "Microsoft",
+    logo: (
+      <svg viewBox="0 0 50 50" className="h-5 w-auto fill-current">
+        <path d="M5 5h19v19H5zM26 5h19v19H26zM5 26h19v19H5zM26 26h19v19H26z"/>
+      </svg>
+    ),
+    text: "Microsoft",
+  },
+  { label: "LiDO", text: "LiDO" },
+  { label: "Lin Professioneel", text: "Lin Professioneel" },
+];
+
 export default function Hero() {
   return (
-    <>
-      {/* Accurate Background Image */}
-      <div 
-        className="fixed inset-0 w-full h-full z-[-1]"
+    <section
+      id="home"
+      className="relative min-h-screen flex flex-col overflow-hidden pt-16"
+    >
+      {/* Blurred background photo — matches Stitch screen 1 */}
+      <div
+        className="absolute inset-0 z-0"
         style={{
-          backgroundImage: "url('https://images.unsplash.com/photo-1542744094-3a31f272c490?q=80&w=2850&auto=format&fit=crop')", // Bright energetic office
+          backgroundImage: "url('https://images.unsplash.com/photo-1497366216548-37526070297c?w=1920&q=80')",
           backgroundSize: "cover",
           backgroundPosition: "center",
-          filter: "blur(6px)",
-          transform: "scale(1.05)",
+          filter: "blur(4px)",
+          transform: "scale(1.04)",
         }}
       />
-      
-      {/* Container - Centered nicely */}
-      <div className="max-w-[1050px] mx-auto w-full px-6 flex flex-col pt-24 min-h-screen">
-        
-        <div className="grid grid-cols-[220px_1fr] gap-8">
-          
-          {/* Left Sidebar (Quick-links) */}
-          <div className="flex flex-col gap-2 pt-2">
-            <h3 className="text-white text-[11px] font-bold mb-2 opacity-90 tracking-wider pl-1 uppercase">Quick-links</h3>
-            {quickLinks.map((link, idx) => (
-              <div
-                key={idx}
-                className={`stitch-sidebar-item ${link.active ? 'active' : ''}`}
-              >
+      {/* Subtle light overlay to keep it airy */}
+      <div className="absolute inset-0 z-0" style={{ background: "rgba(245,245,247,0.35)" }} />
+
+      {/* Main layout: sidebar + cards */}
+      <div className="relative z-10 flex-1 flex flex-col max-w-[1120px] w-full mx-auto px-6 py-8">
+
+        {/* Grid: sidebar left + service cards right */}
+        <div className="flex gap-6 flex-1">
+
+          {/* Left sidebar — Quick-links */}
+          <aside className="hidden lg:flex flex-col gap-2 w-[190px] flex-shrink-0 pt-1">
+            <span
+              className="text-[11px] font-bold uppercase tracking-widest mb-1 pl-1"
+              style={{ color: "rgba(29,29,31,0.6)" }}
+            >
+              Quick-links
+            </span>
+            {quickLinks.map((link) => (
+              <div key={link.name} className={`ql-item ${link.active ? "active" : ""}`}>
                 {link.name}
               </div>
             ))}
-          </div>
+          </aside>
 
-          {/* Main 3x2 Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-            {gridItems.map((item, idx) => (
-              <div key={idx} className="stitch-card p-5">
-                {/* Scaled-down SVG Icon Box */}
-                <div className="w-full flex justify-center items-center h-16 mb-4">
-                  <div className="scale-100 opacity-90">{item.icon}</div>
+          {/* 3×2 Service card grid */}
+          <div className="flex-1 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {services.map((svc) => (
+              <div key={svc.title} className="svc-card flex flex-col">
+                {/* Card photo */}
+                <div className="h-[140px] overflow-hidden">
+                  <img
+                    src={svc.img}
+                    alt={svc.title}
+                    className="w-full h-full object-cover"
+                  />
                 </div>
-                
-                <h4 className="text-[#1d1d1f] font-bold text-[14px] mb-2">{item.title}</h4>
-                <p className="text-[#424245] text-[12px] leading-relaxed mb-6 font-medium opacity-90">
-                  {item.desc}
-                </p>
-
-                {/* Bottom Active indicator line */}
-                {item.active && (
-                  <div className="absolute bottom-5 left-5 w-8 h-[3px] bg-[#F5C41E] rounded-full" />
-                )}
+                {/* Card text */}
+                <div className="p-4 flex-1 flex flex-col">
+                  <h3
+                    className="font-bold mb-1"
+                    style={{ fontSize: "0.9rem", color: "#1d1d1f" }}
+                  >
+                    {svc.title}
+                  </h3>
+                  <p style={{ fontSize: "0.75rem", color: "#424245", lineHeight: 1.5 }}>
+                    {svc.desc}
+                  </p>
+                  {/* Yellow active indicator — matches Stitch */}
+                  {svc.active && (
+                    <div
+                      className="mt-auto pt-3"
+                      style={{ borderTop: "2px solid #F5C41E", width: "32px", marginTop: "12px" }}
+                    />
+                  )}
+                </div>
               </div>
             ))}
           </div>
         </div>
 
-        {/* Bottom Trust Band */}
-        <div className="mt-8 mb-12 ml-[252px]">
-          <div className="stitch-trust-band py-3 px-6 flex items-center justify-between">
-            <span className="text-[#1d1d1f] font-medium text-[12px] opacity-70">Trust</span>
-            
-            {/* Logos */}
-            <div className="flex items-center gap-6 opacity-80 scale-[0.85] origin-right">
-              <span className="text-[#1d1d1f] cursor-pointer font-bold">&lt;</span>
-              <svg viewBox="0 0 50 50" className="h-[24px] w-auto fill-black">
-                <path d="M38.71 26.2c-.05-4.93 4.03-7.3 4.21-7.42-2.3-3.36-5.87-3.82-7.14-3.87-3.03-.31-5.94 1.79-7.48 1.79-1.56 0-3.94-1.75-6.49-1.7-3.32.05-6.4 1.93-8.11 4.88-3.48 6.03-.89 14.95 2.49 19.84 1.66 2.39 3.63 5.07 6.21 4.97 2.5-.1 3.44-1.6 6.47-1.6 3.02 0 3.88 1.6 6.52 1.55 2.69-.04 4.38-2.42 6.03-4.82 1.9-2.76 2.69-5.44 2.73-5.58-.06-.03-5.23-2.01-5.44-8.04zM33.76 12.4c1.38-1.67 2.31-3.99 2.06-6.3-1.99.08-4.4 1.33-5.83 2.99-1.28 1.48-2.4 3.84-2.1 6.11 2.22.17 4.49-1.13 5.87-2.8z" />
+        {/* Trust band — matches bottom of Stitch screen 1 */}
+        <div className="trust-band mt-6 px-6 py-3 flex items-center gap-6 flex-wrap lg:ml-[206px]">
+          <span
+            className="text-xs font-semibold uppercase tracking-wider"
+            style={{ color: "rgba(29,29,31,0.45)" }}
+          >
+            Trust
+          </span>
+          <div className="flex items-center gap-6 flex-wrap" style={{ color: "#1d1d1f", opacity: 0.55 }}>
+            {/* Apple */}
+            <svg viewBox="0 0 814 1000" className="h-5 w-auto fill-current">
+              <path d="M788.1 340.9c-5.8 4.5-108.2 62.2-108.2 190.5 0 148.4 130.3 200.9 134.2 202.2-.6 3.2-20.7 71.9-68.7 141.9-42.8 61.6-87.5 123.1-155.5 123.1s-85.5-39.5-164-39.5c-76 0-103.7 40.8-165.9 40.8s-105-42.3-162.1-109.4C85 459 55.1 338.6 55.1 222c0-90.4 31.7-174.4 89.3-236.9C220.7 12.7 296.4-1 368.7-1c71.1 0 136.6 25 185 25.3 45.7.2 115.9-25.5 198.3-25.5zM541.2 37.6c34.1-40.8 94.2-65 147.3-65 7 48.5-18.3 97.1-51.5 131.5-31.1 32.1-87.5 56.4-142.2 51.1-8.5-47.6 18-99.1 46.4-117.6z"/>
+            </svg>
+            {/* Jamf */}
+            <span className="font-bold text-sm tracking-wide">▲ jamf</span>
+            {/* Microsoft */}
+            <div className="flex items-center gap-1.5">
+              <svg viewBox="0 0 50 50" className="h-4 w-auto fill-current">
+                <path d="M5 5h19v19H5zM26 5h19v19H26zM5 26h19v19H5zM26 26h19v19H26z"/>
               </svg>
-              <div className="flex items-center gap-1.5 text-black">
-                <svg viewBox="0 0 50 50" className="h-[20px] w-auto" fill="currentColor">
-                  <path d="M5 5h19v19H5zM26 5h19v19H26zM5 26h19v19H5zM26 26h19v19H26z" />
-                </svg>
-                <span className="font-bold text-[15px] tracking-tight">Microsoft</span>
-              </div>
-              <span className="font-bold text-[16px] tracking-wider uppercase text-black">LiDO</span>
-              <div className="flex items-center gap-1.5 text-black">
-                <svg viewBox="0 0 50 50" className="h-[20px] w-auto" fill="currentColor">
-                  <path d="M5 5h19v19H5zM26 5h19v19H26zM5 26h19v19H5zM26 26h19v19H26z" />
-                </svg>
-                <span className="font-bold text-[15px] tracking-tight">Microsoft</span>
-              </div>
-              <span className="text-black font-semibold text-[13px]">Lin Professioneel</span>
-              <span className="text-black cursor-pointer font-bold">&gt;</span>
+              <span className="font-semibold text-sm">Microsoft</span>
             </div>
+            {/* LiDO */}
+            <span className="font-bold text-sm tracking-widest uppercase">LiDO</span>
+            {/* Lin Professioneel */}
+            <span className="font-medium text-sm">Lin Professioneel</span>
           </div>
         </div>
 
       </div>
-    </>
+    </section>
   );
 }
