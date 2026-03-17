@@ -23,36 +23,40 @@ export default function Nav() {
 
   return (
     <>
-      {/* Top horizontal nav */}
       <nav
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-           scrolled ? "nav-glass shadow-sm" : "bg-transparent py-4"
+           scrolled ? "bg-[rgba(255,255,255,0.85)] backdrop-blur-3xl shadow-sm border-b border-[rgba(0,0,0,0.05)]" : "bg-transparent py-4"
         }`}
       >
-        <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+        <div className="max-w-[1400px] mx-auto w-full px-8 h-16 flex items-center justify-between">
+          
           {/* Logo */}
-          <a href="#" className="flex items-center gap-2 flex-shrink-0">
+          <a href="#" className="flex items-center gap-3 flex-shrink-0">
             <div
-              className={`w-8 h-8 rounded-[8px] flex items-center justify-center font-bold text-sm transition-all shadow-sm ${scrolled ? 'bg-[#1d1d1f] text-white' : 'bg-white text-[#1d1d1f]'}`}
+              className={`w-9 h-9 rounded-[10px] flex items-center justify-center font-bold text-lg shadow-sm bg-[#F5C41E] text-[#1d1d1f]`}
             >
               W
             </div>
             <span
-              className="font-bold text-base tracking-widest uppercase transition-colors"
-              style={{ color: scrolled ? "#1d1d1f" : "#1d1d1f", letterSpacing: "0.15em" }}
+              className="font-bold text-base tracking-[0.15em] uppercase transition-colors"
+              style={{ color: scrolled ? "#1d1d1f" : "#ffffff" }}
             >
               WORKFLO
             </span>
           </a>
 
           {/* Desktop nav links */}
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden md:flex items-center gap-10">
             {topNavLinks.map((item) =>
               item.isButton ? (
                 <a
                   key={item.label}
                   href="#contact"
-                  className="btn-nav-special"
+                  className={`px-6 py-2 rounded-full text-sm font-medium transition-all ${
+                    scrolled 
+                      ? "border border-[#1d1d1f] text-[#1d1d1f] hover:bg-black hover:text-white"
+                      : "border border-[rgba(255,255,255,0.4)] text-white hover:bg-white hover:text-black"
+                  }`}
                 >
                   {item.label}
                 </a>
@@ -60,12 +64,13 @@ export default function Nav() {
                 <a
                   key={item.label}
                   href="#"
-                  className={`text-sm font-medium transition-colors flex items-center gap-1.5 ${scrolled ? 'text-[#1d1d1f]' : 'text-[#1d1d1f]'}`}
-                  style={{ opacity: 0.9 }}
+                  className={`text-sm font-medium transition-opacity flex items-center gap-1.5 opacity-90 hover:opacity-100 ${
+                    scrolled ? 'text-[#1d1d1f]' : 'text-white drop-shadow-md'
+                  }`}
                 >
                   {item.label}
                   {item.hasDropdown && (
-                    <svg width="10" height="6" viewBox="0 0 10 6" fill="none">
+                    <svg width="10" height="6" viewBox="0 0 10 6" fill="none" className="opacity-70">
                       <path d="M1 1.5L5 5.5L9 1.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
                   )}
@@ -74,28 +79,11 @@ export default function Nav() {
             )}
           </div>
 
-          {/* Download Support button */}
-          <a
-            href="#support"
-            className="hidden md:flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-medium transition-all text-[#1d1d1f]"
-            style={{
-              background: scrolled ? "rgba(0,0,0,0.03)" : "rgba(255,255,255,0.7)",
-              backdropFilter: "blur(12px)",
-              border: scrolled ? "1px solid rgba(0,0,0,0.06)" : "1px solid rgba(255,255,255,0.8)",
-              boxShadow: scrolled ? "none" : "0 4px 10px rgba(0,0,0,0.03)",
-            }}
-          >
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-              <path d="M7 1v8M4 6l3 3 3-3M2 11h10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-            Download Support
-          </a>
-
           {/* Mobile menu toggle */}
           <button
             className="md:hidden p-2 rounded-lg transition-colors"
             onClick={() => setMobileOpen(!mobileOpen)}
-            style={{ color: "#1d1d1f" }}
+            style={{ color: scrolled ? "#1d1d1f" : "#ffffff" }}
           >
             <svg width="22" height="22" viewBox="0 0 20 20" fill="none">
               {mobileOpen ? (
@@ -129,15 +117,6 @@ export default function Nav() {
                 {item.label}
               </a>
             ))}
-            <a
-              href="#support"
-              className="mt-6 flex items-center justify-center gap-2 px-6 py-3 rounded-full text-sm font-semibold transition-all text-[#1d1d1f]"
-              style={{
-                background: "rgba(0,0,0,0.04)",
-              }}
-            >
-              Download Support
-            </a>
           </div>
         )}
       </nav>
