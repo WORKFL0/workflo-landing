@@ -108,3 +108,64 @@ body {
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.15); border-radius: 4px; }
 ::-webkit-scrollbar-thumb:hover { background: rgba(0,0,0,0.3); }
+
+/* Bulletproof Button Styles */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem 2.5rem;
+  border-radius: 9999px;
+  font-weight: 600;
+  font-size: 1.125rem;
+  color: #1d1d1f;
+  background-color: var(--brand-yellow);
+  box-shadow: 0 8px 20px rgba(245,196,30,0.3);
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+.btn-primary:hover {
+  filter: brightness(1.05);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 25px rgba(245,196,30,0.4);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem 2.5rem;
+  border-radius: 9999px;
+  font-weight: 500;
+  font-size: 1.125rem;
+  color: #1d1d1f;
+  background-color: rgba(255,255,255,0.8);
+  border: 1px solid rgba(0,0,0,0.05);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+.btn-secondary:hover {
+  background-color: #ffffff;
+  transform: translateY(-3px);
+}
+
+.btn-nav-special {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.625rem 1.75rem;
+  border-radius: 9999px;
+  font-weight: 600;
+  font-size: 0.875rem;
+  color: #1d1d1f;
+  background-color: var(--brand-yellow);
+  box-shadow: 0 4px 14px rgba(245,196,30,0.3);
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+.btn-nav-special:hover {
+  filter: brightness(1.05);
+  transform: translateY(-1px);
+}
+
