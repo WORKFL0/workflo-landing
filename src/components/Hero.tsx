@@ -83,7 +83,8 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex flex-col overflow-hidden pt-16"
+      className="relative flex flex-col overflow-hidden"
+      style={{ minHeight: "100svh" }}
     >
       {/* Blurred background photo — matches Stitch screen 1 */}
       <div
@@ -100,16 +101,16 @@ export default function Hero() {
       <div className="absolute inset-0 z-0" style={{ background: "rgba(245,245,247,0.35)" }} />
 
       {/* Main layout: sidebar + cards */}
-      <div className="relative z-10 flex-1 flex flex-col max-w-[1120px] w-full mx-auto px-6 py-8">
+      <div className="relative z-10 flex-1 flex flex-col max-w-[1120px] w-full mx-auto px-6" style={{ paddingTop: "80px", paddingBottom: "16px" }}>
 
         {/* Grid: sidebar left + service cards right */}
         <div className="flex gap-6 flex-1">
 
           {/* Left sidebar — Quick-links */}
-          <aside className="hidden lg:flex flex-col gap-2 w-[190px] flex-shrink-0 pt-1">
+          <aside className="hidden lg:flex flex-col gap-2 w-[190px] flex-shrink-0">
             <span
               className="text-[11px] font-bold uppercase tracking-widest mb-1 pl-1"
-              style={{ color: "rgba(29,29,31,0.6)" }}
+              style={{ color: "rgba(29,29,31,0.55)" }}
             >
               Quick-links
             </span>
